@@ -1,0 +1,15 @@
+train_eval.env_name = '2048'
+train_eval.batch_size = 128
+train_eval.train_sequence_length = 4
+train_eval.train_steps_per_iteration = 4
+# train_eval.learning_rate = 0.003,
+# train_eval.gamma = 0.99,
+train_eval.input_fc_layer_params = (32,32)
+# train_eval.fc_conv_layer_params = [(16,3,1),],
+train_eval.lstm_size = (16,16)
+train_eval.output_fc_layer_params = (8,)
+train_eval.num_eval_episodes = 1
+# train_eval.fc_layer_params = (128, 128),
+train_eval.collect_steps_per_iteration = 10
+train_eval.eval_metrics_callback = my_callback
+train_eval.eval_metrics_callback = @src.model.my_callback
