@@ -69,6 +69,8 @@ flags.DEFINE_multi_string('gin_param', None, 'Gin binding parameters.')
 FLAGS = flags.FLAGS
 
 
+from game import Env2048
+
 @gin.configurable
 def train_eval(
     root_dir,
@@ -114,6 +116,7 @@ def train_eval(
     summarize_grads_and_vars=False,
     eval_metrics_callback=None):
   """A simple train and eval for DQN."""
+  print(env_name)
   root_dir = os.path.expanduser(root_dir)
   train_dir = os.path.join(root_dir, 'train')
   eval_dir = os.path.join(root_dir, 'eval')
@@ -336,7 +339,7 @@ def main(_):
   logging.set_verbosity(logging.INFO)
   tf.compat.v1.enable_v2_behavior()
   gin.parse_config_files_and_bindings(FLAGS.gin_file, FLAGS.gin_param)
-  train_eval(FLAGS.root_dir, num_iterations=FLAGS.num_iterations)
+  train_eval(FLAGS.root_dir, num_iterations=FLAGS.num_iterations, eval_metrics_callback=my_callback)
 
 
 if __name__ == '__main__':
