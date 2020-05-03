@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tensorflow
+spec:
+  containers:
+  - name: tensorflow
+    image: tensorflow/tensorflow:2.0.1-py3
+    # Just sleep forever
+    command: [ "sleep" ]
+    args: [ "infinity" ]
